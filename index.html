@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buenos Días</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #87CEFA, #FFD700);
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .sun {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #FFD700, #FFA500);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #FFD700;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 5px #FF6347;
+            animation: floatText 3s ease-in-out infinite;
+        }
+
+        @keyframes floatText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .grass {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, #228B22, #32CD32);
+            overflow: hidden;
+        }
+
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .rose {
+            background: red;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+        }
+
+        .daisy {
+            background: white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        .flower::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: yellow;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .grass .flower {
+            animation: sway 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes sway {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sun"></div>
+        <h1>Buenos días alegríaaaaa, buenos días señor sol</h1>
+        <div class="grass">
+            <!-- Generamos muchas flores -->
+            <!-- Rosas -->
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
+            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
+            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
+            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
+            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
+            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
+            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
+            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
+            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
+            
+
+            <!-- Margaritas -->
+            <div class="flower daisy" style="left: 7%; bottom: 45px;"></div>
+            <div class="flower daisy" style="left: 12%; bottom: 35px;"></div>
+            <div class="flower daisy" style="left: 18%; bottom: 50px;"></div>
+            <div class="flower daisy" style="left: 28%; bottom: 25px;"></div>
+            <div class="flower daisy" style="left: 38%; bottom: 40px;"></div>
+            <div class="flower daisy" style="left: 48%; bottom: 30px;"></div>
+            <div class="flower daisy" style="left: 58%; bottom: 15px;"></div>
+            <div class="flower daisy" style="left: 68%; bottom: 45px;"></div>
+            <div class="flower daisy" style="left: 78%; bottom: 20px;"></div>
+            <div class="flower daisy" style="left: 88%; bottom: 50px;"></div>
+            <div class="flower daisy" style="left: 7%; bottom: 45px;"></div>
+            <div class="flower daisy" style="left: 12%; bottom: 35px;"></div>
+            <div class="flower daisy" style="left: 18%; bottom: 50px;"></div>
+            <div class="flower daisy" style="left: 28%; bottom: 25px;"></div>
+            <div class="flower daisy" style="left: 38%; bottom: 40px;"></div>
+            <div class="flower daisy" style="left: 48%; bottom: 30px;"></div>
+            <div class="flower daisy" style="left: 58%; bottom: 15px;"></div>
+            <div class="flower daisy" style="left: 68%; bottom: 45px;"></div>
+            <div class="flower daisy" style="left: 78%; bottom: 20px;"></div>
+            <div class="flower daisy" style="left: 88%; bottom: 50px;"></div>
+            <div class="flower daisy" style="left: 7%; bottom: 45px;"></div>
+            <div class="flower daisy" style="left: 12%; bottom: 35px;"></div>
+            <div class="flower daisy" style="left: 18%; bottom: 50px;"></div>
+            <div class="flower daisy" style="left: 28%; bottom: 25px;"></div>
+            <div class="flower daisy" style="left: 38%; bottom: 40px;"></div>
+            <div class="flower daisy" style="left: 48%; bottom: 30px;"></div>
+            <div class="flower daisy" style="left: 58%; bottom: 15px;"></div>
+            <div class="flower daisy" style="left: 68%; bottom: 45px;"></div>
+            <div class="flower daisy" style="left: 78%; bottom: 20px;"></div>
+            <div class="flower daisy" style="left: 88%; bottom: 50px;"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+
