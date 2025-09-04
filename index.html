@@ -1,386 +1,377 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buenos Días</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom, #87CEFA, #FFD700);
-            overflow: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><3</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #111824;
+      --accent: #e11d48; /* rojo cereza */
+      --glow: rgba(225, 29, 72, 0.75);
+      --smoke: rgba(200, 200, 200, 0.06);
+      --text: #e5e7eb;
+    }
 
-        .container {
-            text-align: center;
-        }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(1200px 800px at 50% 120%, #0c121b 0%, var(--bg) 50%, #070a0f 100%);
+      color: var(--text);
+      overflow: hidden;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
 
-        .sun {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, #FFD700, #FFA500);
-            border-radius: 50%;
-            box-shadow: 0 0 50px #FFD700;
-            margin: 0 auto 20px;
-        }
+    #wrap {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            color: #FFFFFF;
-            text-shadow: 2px 2px 5px #FF6347;
-            animation: floatText 3s ease-in-out infinite;
-        }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
 
-        @keyframes floatText {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
+    .hud {
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+      justify-content: center;
+      padding: .6rem .8rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.12));
+      border-top: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px);
+    }
 
-        .grass {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(to top, #228B22, #32CD32);
-            overflow: hidden;
-        }
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--panel);
+      color: var(--text);
+      padding: .55rem .9rem;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .08s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,0.03);
+    }
+    .btn:hover { border-color: rgba(255,255,255,0.22); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
 
-        .flower {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-        }
-
-        .rose {
-            background: red;
-            box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
-        }
-
-        .daisy {
-            background: white;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
-
-        .flower::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            background: yellow;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .grass .flower {
-            animation: sway 3s infinite alternate ease-in-out;
-        }
-
-        @keyframes sway {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(10px);
-            }
-        }
-    </style>
+    .label {
+      font-size: .9rem;
+      opacity: .8;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sun"></div>
-        <h1>Buenos días alegríaaaaa, buenos días señor sol</h1>
-        <div class="grass">
-            <!-- Generamos muchas flores -->
-            <!-- Rosas -->
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 5%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 10%; bottom: 50px;"></div>
-            <div class="flower rose" style="left: 15%; bottom: 30px;"></div>
-            <div class="flower rose" style="left: 20%; bottom: 25px;"></div>
-            <div class="flower rose" style="left: 30%; bottom: 40px;"></div>
-            <div class="flower rose" style="left: 35%; bottom: 15px;"></div>
-            <div class="flower rose" style="left: 50%; bottom: 20px;"></div>
-            <div class="flower rose" style="left: 65%; bottom: 35px;"></div>
-            <div class="flower rose" style="left: 75%; bottom: 10px;"></div>
-            <div class="flower rose" style="left: 85%; bottom: 30px;"></div>
-            
-
-            <!-- Margaritas -->
-            <div class="flower daisy" style="left: 7%; bottom: 45px;"></div>
-            <div class="flower daisy" style="left: 12%; bottom: 35px;"></div>
-            <div class="flower daisy" style="left: 18%; bottom: 50px;"></div>
-            <div class="flower daisy" style="left: 28%; bottom: 25px;"></div>
-            <div class="flower daisy" style="left: 38%; bottom: 40px;"></div>
-            <div class="flower daisy" style="left: 48%; bottom: 30px;"></div>
-            <div class="flower daisy" style="left: 58%; bottom: 15px;"></div>
-            <div class="flower daisy" style="left: 68%; bottom: 45px;"></div>
-            <div class="flower daisy" style="left: 78%; bottom: 20px;"></div>
-            <div class="flower daisy" style="left: 88%; bottom: 50px;"></div>
-            <div class="flower daisy" style="left: 7%; bottom: 45px;"></div>
-            <div class="flower daisy" style="left: 12%; bottom: 35px;"></div>
-            <div class="flower daisy" style="left: 18%; bottom: 50px;"></div>
-            <div class="flower daisy" style="left: 28%; bottom: 25px;"></div>
-            <div class="flower daisy" style="left: 38%; bottom: 40px;"></div>
-            <div class="flower daisy" style="left: 48%; bottom: 30px;"></div>
-            <div class="flower daisy" style="left: 58%; bottom: 15px;"></div>
-            <div class="flower daisy" style="left: 68%; bottom: 45px;"></div>
-            <div class="flower daisy" style="left: 78%; bottom: 20px;"></div>
-            <div class="flower daisy" style="left: 88%; bottom: 50px;"></div>
-            <div class="flower daisy" style="left: 7%; bottom: 45px;"></div>
-            <div class="flower daisy" style="left: 12%; bottom: 35px;"></div>
-            <div class="flower daisy" style="left: 18%; bottom: 50px;"></div>
-            <div class="flower daisy" style="left: 28%; bottom: 25px;"></div>
-            <div class="flower daisy" style="left: 38%; bottom: 40px;"></div>
-            <div class="flower daisy" style="left: 48%; bottom: 30px;"></div>
-            <div class="flower daisy" style="left: 58%; bottom: 15px;"></div>
-            <div class="flower daisy" style="left: 68%; bottom: 45px;"></div>
-            <div class="flower daisy" style="left: 78%; bottom: 20px;"></div>
-            <div class="flower daisy" style="left: 88%; bottom: 50px;"></div>
-        </div>
+  <div id="wrap">
+    <canvas id="scene"></canvas>
+    <div class="hud">
+      <button id="restart" class="btn">Reiniciar animación</button>
+      <span class="label">Dos cañones disparan puntos rojos que se unen en el centro para formar un corazón.</span>
     </div>
+  </div>
+
+  <script>
+    (() => {
+      const canvas = document.getElementById('scene');
+      const ctx = canvas.getContext('2d');
+
+      const state = {
+        w: 0, h: 0, dpr: Math.max(1, Math.min(window.devicePixelRatio || 1, 2)),
+        cannons: [],
+        particles: [],
+        heart: { points: [], occupied: new Set(), center: {x: 0, y: 0}, scale: 1 },
+        running: true,
+        spawnTimer: 0,
+      };
+
+      function resize() {
+        state.w = Math.floor(window.innerWidth);
+        state.h = Math.floor(window.innerHeight);
+        const { dpr } = state;
+        canvas.width = Math.floor(state.w * dpr);
+        canvas.height = Math.floor(state.h * dpr);
+        canvas.style.width = state.w + 'px';
+        canvas.style.height = state.h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        setupScene();
+      }
+
+      function setupScene() {
+        // Setup cannons at bottom-left and bottom-right
+        const y = state.h - 36;
+        state.cannons = [
+          { x: 44, y, angle: -Math.atan2(state.h * 0.45, state.w * 0.5 - 44) },
+          { x: state.w - 44, y, angle: Math.PI + Math.atan2(state.h * 0.45, state.w * 0.5 - 44) }
+        ];
+
+        // Heart target cloud
+        state.heart.center = { x: state.w / 2, y: state.h * 0.42 };
+        const maxHeartWidth = Math.min(state.w, state.h) * 0.38;
+        state.heart.scale = maxHeartWidth / 2.6; // scales implicit heart [-1.3..1.3] to px
+        state.heart.points = generateHeartPoints(850); // density
+        state.heart.occupied = new Set();
+
+        // Clear particles
+        state.particles = [];
+        state.spawnTimer = 0;
+      }
+
+      function inHeart(x, y) {
+        // Implicit heart: (x^2 + y^2 - 1)^3 - x^2 y^3 <= 0 (classic)
+        const a = x*x + y*y - 1;
+        return (a*a*a - x*x * y*y*y) <= 0;
+      }
+
+      function generateHeartPoints(n) {
+        const pts = [];
+        const { center, scale } = state.heart;
+        // Random fill within bounding box of implicit heart
+        let tries = 0;
+        while (pts.length < n && tries < n * 40) {
+          tries++;
+          const rx = (Math.random() * 2.6) - 1.3;  // [-1.3, 1.3]
+          const ry = (Math.random() * 2.3) - 1.15; // slightly cropped vertically for nicer proportions
+          if (inHeart(rx, ry)) {
+            const px = center.x + rx * scale;
+            const py = center.y - ry * scale; // invert y for canvas coords
+            pts.push({ x: px, y: py, taken: false });
+          }
+        }
+        return pts;
+      }
+
+      function spawnParticle(fromRight = false) {
+        const c = fromRight ? state.cannons[1] : state.cannons[0];
+        const speed = 3.3 + Math.random() * 0.9;
+        const center = state.heart.center;
+        const dirx = center.x + (Math.random()-0.5)*60 - c.x;
+        const diry = center.y + (Math.random()-0.5)*60 - c.y;
+        const len = Math.hypot(dirx, diry) || 1;
+        const vx = (dirx/len) * speed;
+        const vy = (diry/len) * speed;
+        state.particles.push({
+          x: c.x + Math.cos(c.angle)*18,
+          y: c.y + Math.sin(c.angle)*18,
+          vx, vy,
+          life: 0,
+          state: 'flying',
+          target: -1
+        });
+      }
+
+      function acquireTarget(p) {
+        // Assign nearest free heart point
+        let bestIdx = -1, bestDist = 1e9;
+        for (let i = 0; i < state.heart.points.length; i++) {
+          if (state.heart.occupied.has(i)) continue;
+          const t = state.heart.points[i];
+          const d = (p.x - t.x)**2 + (p.y - t.y)**2;
+          if (d < bestDist) { bestDist = d; bestIdx = i; }
+        }
+        if (bestIdx >= 0) {
+          state.heart.occupied.add(bestIdx);
+          p.target = bestIdx;
+          p.state = 'captured';
+        }
+      }
+
+      function update() {
+        // Spawn rhythmically from both cannons
+        state.spawnTimer += 1;
+        if (state.spawnTimer % 2 === 0 && state.heart.occupied.size < state.heart.points.length) {
+          spawnParticle(false);
+          spawnParticle(true);
+        }
+
+        const center = state.heart.center;
+        const captureR = Math.max(32, state.heart.scale * 0.25);
+
+        for (let i = state.particles.length - 1; i >= 0; i--) {
+          const p = state.particles[i];
+          p.life += 1;
+
+          if (p.state === 'flying') {
+            // Slight homing towards center with tiny randomness
+            const toCx = center.x - p.x;
+            const toCy = center.y - p.y;
+            const L = Math.hypot(toCx, toCy) || 1;
+            const homing = 0.06;
+            p.vx += (toCx / L) * homing + (Math.random()-0.5)*0.03;
+            p.vy += (toCy / L) * homing + (Math.random()-0.5)*0.03;
+            // Limit speed
+            const sp = Math.hypot(p.vx, p.vy);
+            const maxSp = 3.8;
+            if (sp > maxSp) { p.vx = p.vx / sp * maxSp; p.vy = p.vy / sp * maxSp; }
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (Math.hypot(p.x - center.x, p.y - center.y) < captureR) {
+              acquireTarget(p);
+            }
+
+            // Cull off-screen
+            if (p.x < -50 || p.x > state.w + 50 || p.y < -50 || p.y > state.h + 50) {
+              state.particles.splice(i, 1);
+            }
+          } else if (p.state === 'captured') {
+            const t = state.heart.points[p.target];
+            const dx = t.x - p.x;
+            const dy = t.y - p.y;
+            p.vx = p.vx * 0.85 + dx * 0.12;
+            p.vy = p.vy * 0.85 + dy * 0.12;
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Snap when close
+            if (Math.hypot(dx, dy) < 0.7) {
+              p.x = t.x; p.y = t.y; p.vx = p.vy = 0; p.state = 'landed';
+            }
+          }
+        }
+      }
+
+      function drawCannon(c) {
+        ctx.save();
+        ctx.translate(c.x, c.y);
+
+        // base
+        ctx.fillStyle = 'rgba(255,255,255,0.06)';
+        roundedRect(-18, -10, 36, 20, 6);
+        ctx.fill();
+
+        // barrel
+        ctx.rotate(c.angle);
+        const grad = ctx.createLinearGradient(0, 0, 36, 0);
+        grad.addColorStop(0, 'rgba(255,255,255,0.10)');
+        grad.addColorStop(1, 'rgba(255,255,255,0.02)');
+        ctx.fillStyle = grad;
+        roundedRect(0, -6, 36, 12, 5);
+        ctx.fill();
+
+        // muzzle glow
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.fillStyle = 'rgba(225, 29, 72, 0.20)';
+        ctx.beginPath();
+        ctx.arc(38, 0, 10, 0, Math.PI*2);
+        ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
+
+        ctx.restore();
+      }
+
+      function roundedRect(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+      }
+
+      function drawParticles() {
+        // trailing smoke
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        for (const p of state.particles) {
+          const alpha = p.state === 'flying' ? 0.18 : 0.10;
+          ctx.fillStyle = `rgba(225,29,72,${alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 2.1, 0, Math.PI*2);
+          ctx.fill();
+        }
+        ctx.restore();
+
+        // soft bloom for the heart when many are landed
+        const landed = state.particles.filter(p => p.state === 'landed').length;
+        if (landed > 50) {
+          ctx.save();
+          ctx.globalCompositeOperation = 'lighter';
+          ctx.fillStyle = 'rgba(225, 29, 72, 0.07)';
+          for (const p of state.particles) {
+            if (p.state !== 'landed') continue;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 6, 0, Math.PI*2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      function drawHeartOutline() {
+        // Subtle outline to hint target shape
+        const { center, scale } = state.heart;
+        ctx.save();
+        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.beginPath();
+        for (let t = 0; t <= Math.PI * 2 + 0.01; t += 0.02) {
+          const x = 16 * Math.sin(t) ** 3;
+          const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+          const px = center.x + (x / 18) * scale * 1.2;
+          const py = center.y - (y / 18) * scale * 1.2;
+          if (t === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function draw() {
+        // background
+        ctx.clearRect(0, 0, state.w, state.h);
+
+        // floating haze
+        ctx.fillStyle = 'rgba(255,255,255,0.015)';
+        for (let i = 0; i < 18; i++) {
+          const x = (i * 197) % state.w;
+          const y = (i * 123) % state.h;
+          ctx.beginPath();
+          ctx.arc(x, y, (i%5+1)*18, 0, Math.PI*2);
+          ctx.fill();
+        }
+
+        drawHeartOutline();
+        drawParticles();
+
+        // Cannons and their ground shadows
+        for (const c of state.cannons) drawCannon(c);
+
+        // ground line
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(0, state.h - 24.5);
+        ctx.lineTo(state.w, state.h - 24.5);
+        ctx.stroke();
+      }
+
+      function loop() {
+        update();
+        draw();
+        if (state.running) requestAnimationFrame(loop);
+      }
+
+      // Controls
+      document.getElementById('restart').addEventListener('click', () => {
+        setupScene();
+      });
+
+      window.addEventListener('resize', resize);
+      resize();
+      loop();
+    })();
+  </script>
 </body>
 </html>
+
 
 
